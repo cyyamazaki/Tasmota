@@ -691,7 +691,7 @@
  * Provide an image without sensors
 \*********************************************************************************************/
 
-#ifdef FIRMWARE_LITE
+#if defined(FIRMWARE_LITE) || defined(FIRMWARE_ESSENTIAL)
 
 #ifndef CODE_IMAGE_STR
   #define CODE_IMAGE_STR "lite"
@@ -836,7 +836,24 @@
 #undef DEBUG_THEO                                // Disable debug code
 #undef USE_DEBUG_DRIVER                          // Disable debug code
 #undef USE_AC_ZERO_CROSS_DIMMER                  // Disable support for AC_ZERO_CROSS_DIMMER
-#endif  // FIRMWARE_LITE
+#endif  // FIRMWARE_LITE || FIRMWARE_ESSENTIAL
+
+/*********************************************************************************************\
+ * [tasmota-1M-essential.bin]
+ * Same restrictions as tasmota-lite (relay/switch focused, fits ESP8266 1M) plus a minimal
+ * set of the most common environmental sensors (temperature/humidity/pressure).
+\*********************************************************************************************/
+
+#ifdef FIRMWARE_ESSENTIAL
+
+// -- Basic sensors kept enabled --------------------
+#define USE_DS18x20                              // Add support for DS18x20 temperature sensors (+2k6 code)
+#define USE_I2C                                  // I2C using library wire, needed for the sensors below (+10k code)
+#define USE_DHT                                  // Add support for DHT11, AM2301 (DHT21, DHT22, AM2302, AM2321) and SI7021 Temperature and Humidity sensor (+1k6 code)
+#define USE_HTU                                  // [I2cDriver9] Enable HTU21/SI7013/SI7020/SI7021 sensor (+1k5 code)
+#define USE_BMP                                  // [I2cDriver10] Enable BMP085/BMP180/BMP280/BME280 sensors (+4k4 code)
+
+#endif  // FIRMWARE_ESSENTIAL
 
 
 /*********************************************************************************************\
