@@ -1,5 +1,27 @@
 ![Tasmota logo](/tools/logo/TASMOTA_FullLogo_Vector.svg#gh-light-mode-only)![Tasmota logo](/tools/logo/TASMOTA_FullLogo_Vector_White.svg#gh-dark-mode-only)
 
+# Tasmota ESP8266 1M — Essential
+
+Este é um **fork pessoal e reduzido** do [Tasmota](https://github.com/arendst/Tasmota), mantido para compilar **um único firmware**: `tasmota-1M-essential`, voltado exclusivamente para placas **ESP8266 com 1MB de flash**, controlando **apenas dispositivos essenciais**.
+
+**Mantido:**
+- Relé / switch (liga/desliga) e botões físicos
+- Timers, regras (rules) básicas
+- MQTT, Web UI, OTA
+- Sensores básicos: DHT11/DHT22/AM2301, DS18x20, HTU21/SI7021, BMP/BME280
+
+**Removido** (código e builds que não se aplicam a este uso):
+- Suporte a ESP32 por completo (placas, código, build ESP-IDF)
+- Zigbee, KNX, DALI, Berry (linguagem de script)
+- Monitoramento de energia, Displays
+- Drivers de LED/dimmer (WS2812, MY92X1, SM16716/2135/2335, etc.) e sensores I2C além dos dois mantidos acima
+- IR remoto, Sonoff RF/SC/iFan, Tuya MCU, LoRa/LoRaWAN, WireGuard, Telegram, GPS, sensores de CO2/particulados, RFID/Wiegand, HDMI-CEC, pontes Modbus/TCP, entre outros drivers opcionais não usados
+- Todos os outros ambientes de build do PlatformIO (só resta `[env:tasmota-1M-essential]` em `platformio_tasmota_env.ini`)
+
+Veja o histórico de commits deste repositório para o detalhamento completo de cada remoção. O restante deste README é a documentação original do projeto Tasmota (mantida para créditos, licença e referência), mas **nem tudo nela se aplica a este fork** — em caso de dúvida, o `platformio_tasmota_env.ini` e o `tasmota/include/tasmota_configurations.h` (bloco `FIRMWARE_ESSENTIAL`) deste repositório são a fonte da verdade sobre o que está realmente incluído.
+
+---
+
 Alternative firmware for [ESP8266](https://en.wikipedia.org/wiki/ESP8266) and [ESP32](https://en.wikipedia.org/wiki/ESP32) based devices with **easy configuration using webUI, OTA updates, automation using timers or rules, expandability and entirely local control over MQTT, HTTP, Serial or KNX**.
 _Written for PlatformIO._
 

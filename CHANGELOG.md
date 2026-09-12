@@ -1,6 +1,8 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+> **Nota deste fork:** o histórico abaixo é herdado do projeto original [Tasmota](https://github.com/arendst/Tasmota) e cobre recursos que não existem mais neste repositório (veja o [README.md](README.md)). Para as mudanças específicas deste fork (remoção de ESP32, Zigbee, Berry, energia, displays, drivers não usados, etc.), veja o histórico de commits do repositório.
+
 ## [Unreleased] - Development
 
 ## [15.0.1.2]

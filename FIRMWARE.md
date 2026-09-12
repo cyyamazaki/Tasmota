@@ -1,44 +1,21 @@
-![Tasmota logo](/tools/logo/TASMOTA_FullLogo_Vector.svg#gh-light-mode-only)![Tasmota logo](/tools/logo/TASMOTA_FullLogo_Vector_White.svg#gh-dark-mode-only)
+## Firmware deste fork
 
-Alternative firmware for [ESP8266](https://en.wikipedia.org/wiki/ESP8266) based devices with **easy configuration using webUI, OTA updates, automation using timers or rules, expandability and entirely local control over MQTT, HTTP, Serial or KNX**.
-_Written for PlatformIO with limited support for Arduino IDE._
+Este repositório é um fork reduzido do Tasmota (veja o [README.md](README.md)) que compila **apenas um firmware**:
 
-[![GitHub version](https://img.shields.io/github/release/arendst/Tasmota.svg)](https://github.com/arendst/Tasmota/releases/latest)
-[![GitHub download](https://img.shields.io/github/downloads/arendst/Tasmota/total.svg)](https://github.com/arendst/Tasmota/releases/latest)
-[![License](https://img.shields.io/github/license/arendst/Tasmota.svg)](LICENSE.txt)
-[![Chat](https://img.shields.io/discord/479389167382691863.svg)](https://discord.gg/Ks2Kzd4)
+| Ambiente PlatformIO | Placa alvo | Escopo |
+| --- | --- | --- |
+| `tasmota-1M-essential` | ESP8266 1M (`esp8266_1M`) | Relé/switch, botões, timers, regras, MQTT/Web/OTA + sensores DHT, DS18x20, HTU21/SI7021, BMP/BME280 |
 
-If you like **Tasmota**, give it a star, or fork it and contribute!
+Para compilar:
 
-[![GitHub stars](https://img.shields.io/github/stars/arendst/Tasmota.svg?style=social&label=Star)](https://github.com/arendst/Tasmota/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/arendst/Tasmota.svg?style=social&label=Fork)](https://github.com/arendst/Tasmota/network)
-[![donate](https://img.shields.io/badge/donate-PayPal-blue.svg)](https://paypal.me/tasmota)
+```
+pio run -e tasmota-1M-essential
+```
 
-See [CHANGELOG.md](https://github.com/arendst/Tasmota/blob/development/CHANGELOG.md) for changes since last release.
+O binário resultante fica em `build_output/firmware/`.
 
-## Development
+Não há outros ambientes disponíveis (a matriz original de builds do Tasmota — `tasmota`, `tasmota-lite`, `tasmota-minimal`, `tasmota-sensors`, `tasmota-knx`, `tasmota-display`, `tasmota-ir`, `tasmota-zbbridge`, `tasmota-zigbee`, os builds ESP32 e as ~30 traduções — foi removida deste fork por não se aplicar ao uso pretendido). Para essas variantes, use o projeto original: https://github.com/arendst/Tasmota
 
-[![Dev Version](https://img.shields.io/badge/development%20version-v15.0.x.x-blue.svg)](https://github.com/arendst/Tasmota)
-[![Download Dev](https://img.shields.io/badge/download-development-yellow.svg)](http://ota.tasmota.com/tasmota/)
-[![Tasmota CI](https://github.com/arendst/Tasmota/workflows/Tasmota%20CI/badge.svg)](https://github.com/arendst/Tasmota/actions?query=workflow%3A%22Tasmota+CI%22)
-[![Tasmota ESP32 CI](https://github.com/arendst/Tasmota/workflows/Tasmota%20ESP32%20CI/badge.svg)](https://github.com/arendst/Tasmota/actions?query=workflow%3A%22Tasmota+ESP32+CI%22)
-[![Build_firmware](https://github.com/arendst/Tasmota/workflows/Build_firmware/badge.svg)](https://github.com/arendst/Tasmota/actions?query=workflow%3ABuild_firmware)
+### Personalização em tempo de compilação
 
-
-Unless your Tasmota powered device exhibits a problem or you need to make use of a feature that is not available in the Tasmota version currently installed on your device, leave your device alone - it works so don't make unnecessary changes! If the release version (i.e., the master branch) exhibits unexpected behaviour for your device and configuration, you should upgrade to the latest development version instead to see if your problem is resolved as some bugs in previous releases or development builds may already have been resolved.
-
-If new commits have been merged and they compile successfully, new binary files for every variant will be placed here https://github.com/arendst/Tasmota-firmware/tree/main/firmware (this URL address can NOT be used for OTA updates) It is important to note that these binaries are based on the current development codebase. These commits are tested as much as is possible and are typically quite stable. However, it is infeasible to test on the hundreds of different types of devices with all the available configuration options permitted.
-
-Note that there is a chance, as with any upgrade, that the device may not function as expected. You must always account for the possibility that you may need to flash the device via the serial programming interface if the OTA upgrade fails. Even with the master release, you should always attempt to test the device or a similar prototype before upgrading a device which is in production or is hard to reach. And, as always, make a backup of the device configuration before beginning any firmware update.
-
-## Disclaimer
-
-:warning: **DANGER OF ELECTROCUTION** :warning:
-
-If your device connects to mains electricity (AC power) there is danger of electrocution if not installed properly. If you don't know how to install it, please call an electrician (***Beware:*** certain countries prohibit installation without a licensed electrician present). Remember: _**SAFETY FIRST**_. It is not worth the risk to yourself, your family and your home if you don't know exactly what you are doing. Never tinker or try to flash a device using the serial programming interface while it is connected to MAINS ELECTRICITY (AC power).
-
-We don't take any responsibility nor liability for using this software nor for the installation or any tips, advice, videos, etc. given by any member of this site or any related site.
-
-## Quick Install
-Download one of the binaries https://github.com/arendst/Tasmota-firmware/tree/main/firmware and flash it to your hardware [using our installation guide](https://tasmota.github.io/docs/Getting-Started).
-
+Para mudar configurações sem alterar `my_user_config.h`, copie `tasmota/user_config_override_sample.h` para `tasmota/user_config_override.h` (ignorado pelo git) e ajuste ali.

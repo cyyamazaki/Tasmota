@@ -1,4 +1,7 @@
 # I2C devices
+
+> **Nota deste fork:** apenas os drivers `USE_HTU` (HTU21/SI7021) e `USE_BMP` (BMP/BME280) estão compilados neste build (`tasmota-1M-essential`). Todos os demais dispositivos I2C listados abaixo foram removidos do código-fonte deste repositório — a tabela é herdada do projeto original [Tasmota](https://github.com/arendst/Tasmota) para referência. Veja o [README.md](README.md).
+
 Tasmota supports several I2C devices. To use them I2C and the device need to be enabled at compile time. I2C and some devices are supported also in the official releases. Devices can be de/-actived on runtime to solve possible address conflicts. (e.g. address 0x27 is used by multiple devices)
 
 Using command ``I2cDriver`` individual drivers can be enabled or disabled at runtime allowing duplicate I2C addresses at compile time. Use the Index from the table below to control I2C drivers like ``I2cDriver10 0`` for disabling BMP support.

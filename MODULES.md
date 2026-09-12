@@ -1,5 +1,7 @@
 ## Supported Modules
 
+> **Nota deste fork:** esta lista é herdada do projeto original [Tasmota](https://github.com/arendst/Tasmota) e inclui módulos com placas ESP32 e recursos (energia, dimmer/light, display, RF) que foram **removidos** deste fork (veja o [README.md](README.md)). Só os módulos ESP8266 cujo uso se resume a relé/switch/botões e aos sensores DHT/DS18x20/HTU21/BMP fazem sentido aqui — por exemplo "01 Sonoff Basic" funciona normalmente, mas o medidor de energia de "06 Sonoff Pow" não, pois esse driver foi removido.
+
 ### ESP8266 based
 The following ESP8266 based hardware modules are supported.
 
